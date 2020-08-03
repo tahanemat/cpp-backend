@@ -9,9 +9,7 @@ find_package(Boost REQUIRED context)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(LIBS ${Boost_LIBRARIES} ${OPENSSL_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
-add_library(http lithium_http_backend.hh)
-set_target_properties(http PROPERTIES LINKER_LANGUAGE CXX)
+include_directories(include)
+add_subdirectory(src)
 
-add_executable(main main.cpp)
-
-target_link_libraries(main PRIVATE ${http} ${LIBS})
+target_link_libraries(source PRIVATE ${http} ${LIBS})
